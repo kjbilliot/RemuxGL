@@ -12,6 +12,7 @@ using System.IO;
 using Emux.GameBoy.Graphics;
 using System.Diagnostics;
 using Color = Microsoft.Xna.Framework.Color;
+using Emux.GameBoy.Input;
 
 namespace RemuxGL.StateSystem
 {
@@ -23,6 +24,7 @@ namespace RemuxGL.StateSystem
         private Stopwatch sw = new Stopwatch();
         private SpriteFont font;
         private RemuxWindow wnd;
+        private IoManager ioman;
 
         public GameboyPlayScreen(string fname, RemuxWindow wnd)
         {
@@ -31,6 +33,7 @@ namespace RemuxGL.StateSystem
             vm.Gpu.VideoOutput = this;
             vm.Cpu.Run();
             this.wnd = wnd;
+            ioman = new IoManager(vm);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

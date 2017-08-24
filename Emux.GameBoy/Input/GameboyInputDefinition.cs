@@ -12,10 +12,10 @@ namespace Emux.GameBoy.Input
         public bool IsPressed
         {
             get
-            {
-                if (_button != null)
+            { 
+                if (_button != 0)
                 {
-                  return Keyboard.GetState().IsKeyDown(_key) || GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.One).IsButtonDown(_button);
+                    return Keyboard.GetState().IsKeyDown(_key) || GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.One).IsButtonDown(_button);
                 }
                 else
                 {

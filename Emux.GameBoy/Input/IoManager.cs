@@ -59,7 +59,6 @@ namespace Emux.GameBoy.Input
                     if (InputMap[k].IsPressed)
                     {
                         vm.KeyPad.PressedButtons |= k;
-                        Console.Write(InputMap[k]);
                     }
                     else vm.KeyPad.PressedButtons &= ~k;
                 }
