@@ -22,9 +22,14 @@ namespace RemuxGL.StateSystem
         private List<string> subDirectories;
         private string pointerCharacter = ">";
         private List<string> displayList = new List<string>();
+        private List<int> gbFiles = new List<int>();
         private int pointerIndex = 0;
         private Texture2D blueRectangle;
         private const int MaxPointerIndex = 22;
+        private float gbGameScalar = 1.0f;
+        private float gbGameScalarVelocity = 0.005f;
+        private const float MaxGbScalar = 1.1f;
+        private const float MinGbScalar = 0.98f;
 
         public AsciiFileBrowserScreen(Game game)
         {
@@ -41,11 +46,20 @@ namespace RemuxGL.StateSystem
         {
             if (subDirectories == null) subDirectories = new List<string>();
             if (currentDirectoryContents == null) currentDirectoryContents = new List<string>();
+            gbFiles.Clear();
             currentDirectoryContents = Directory.GetFiles(currentDirectory).ToList();
             List<string> subdirs = Directory.GetDirectories(currentDirectory).ToList();
             subDirectories.Clear();
             subDirectories.Add("..");
             subDirectories.AddRange(subdirs);
+            DetectGbGames();
+        }
+
+        private void DetectGbGames()
+        {
+            for (int i = 0; i < currentDirectoryContents.Count; i++)
+                if (currentDirectoryContents[i].EndsWith(".gb"))
+                    gbFiles.Add(i);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -66,7 +80,18 @@ namespace RemuxGL.StateSystem
                     allLines.AddRange(tenBefore);
                     allLines.AddRange(tenAfter);
                     for (int i = 0; i < allLines.Count; i++)
-                        spriteBatch.DrawString(font, allLines[i].Item1.Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + 5), allLines[i].Item2 ? Color.Gold : Color.Cyan);
+                    {
+                        if (!allLines[i].Item2 && allLines[i].Item1.EndsWith(".gb"))
+                        {
+                            spriteBatch.DrawString(font, allLines[i].Item1.Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + 5),
+                                allLines[i].Item2 ? Color.Gold : Color.Cyan, 0.0f, new Vector2(0, 0), gbGameScalar, SpriteEffects.None, 0.0f);
+                        }
+                        else
+                        {
+                            spriteBatch.DrawString(font, allLines[i].Item1.Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + 5), allLines[i].Item2 ? Color.Gold : Color.Cyan);
+                        }
+
+                    }
                     spriteBatch.DrawString(font, pointerCharacter, new Vector2(5, LineSpacing * (MaxPointerIndex/2 + 1) + 5), Color.White);
 
                 }
@@ -75,7 +100,17 @@ namespace RemuxGL.StateSystem
                     for (int i = 0; i < subDirectories.Count; i++)
                         spriteBatch.DrawString(font, subDirectories[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + 5), Color.Gold);
                     for (int i = 0; i < currentDirectoryContents.Count; i++)
-                        spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + (LineSpacing * subDirectories.Count) + 5), Color.Cyan);
+                    {
+                        if (currentDirectoryContents[i].EndsWith(".gb"))
+                        {
+                            spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + subDirectories.Count + 1) + 5),
+                                Color.Cyan, 0.0f, new Vector2(0, 0), gbGameScalar, SpriteEffects.None, 0.0f);
+                        }
+                        else
+                        {
+                            spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + subDirectories.Count + 1) + 5), Color.Cyan);
+                        }
+                    }
                     spriteBatch.DrawString(font, pointerCharacter, new Vector2(5, LineSpacing * (pointerIndex + 1) + 5), Color.White);
                 }
             }
@@ -84,7 +119,17 @@ namespace RemuxGL.StateSystem
                 for (int i = 0; i < subDirectories.Count; i++)
                     spriteBatch.DrawString(font, subDirectories[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + 5), Color.Gold);
                 for (int i = 0; i < currentDirectoryContents.Count; i++)
-                    spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + 1) + (LineSpacing * subDirectories.Count) + 5), Color.Cyan);
+                {
+                    if (currentDirectoryContents[i].EndsWith(".gb"))
+                    {
+                        spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + subDirectories.Count + 1) + 5),
+                            Color.Chartreuse, 0.0f, new Vector2(0, 0), gbGameScalar, SpriteEffects.None, 0.0f);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, currentDirectoryContents[i].Replace(currentDirectory, ""), new Vector2(25, LineSpacing * (i + subDirectories.Count + 1) + 5), Color.Cyan);
+                    }
+                }
                 spriteBatch.DrawString(font, pointerCharacter, new Vector2(5, LineSpacing * (pointerIndex + 1) + 5), Color.White);
             }
         }
@@ -168,6 +213,11 @@ namespace RemuxGL.StateSystem
             {
                 pressedEnterLastFrame = false;
             }
+
+            gbGameScalar += gbGameScalarVelocity;
+
+            if (gbGameScalar >= MaxGbScalar || gbGameScalar <= MinGbScalar) gbGameScalarVelocity *= -1;
+
         }
 
         private void EnterPressed()
@@ -178,19 +228,18 @@ namespace RemuxGL.StateSystem
 
                 if (chosenDir == ".." && currentDirectory.Length > 3)
                 {
-#if WINDOWS
-                    if (currentDirectory.LastIndexOf("\\") != 2)
-#elif LINUX
-                    if (currentDirectory != "/")
-#endif
-                    {
-#if WINDOWS
-                        currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("\\"));
-#elif LINUX
-                        currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/"));
-                        if (currentDirectory == "") currentDirectory = "/";
-#endif
-
+                    bool flag = OsUtil.IsWindows() ? currentDirectory.LastIndexOf("\\") != 2 : currentDirectory != "/";
+                    if (flag)
+                    {   
+                        if (OsUtil.IsWindows())
+                        {
+                            currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("\\"));
+                        }
+                        else
+                        {
+                            currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/"));
+                            if (currentDirectory == "") currentDirectory = "/";
+                        }
                     }
                     else
                     {
