@@ -24,19 +24,13 @@ namespace Emux.GameBoy.Input
             {Select, new GameBoyInputDefinition(Keys.LeftShift) },
         };
         private GameBoy vm;
-        private Thread ioThread;
         private GamePadCapabilities capabilities;
         public IoManager(GameBoy vm)
         {
-            this.vm = vm;
-            ioThread = new Thread(Update);
-            ioThread.SetApartmentState(ApartmentState.STA);
-            ioThread.Start();
             capabilities = GamePad.GetCapabilities(Microsoft.Xna.Framework.PlayerIndex.One);
             if (capabilities.IsConnected)
-            {
                 AddGamePadBindings();
-            }
+            this.vm = vm;
         }
         private void AddGamePadBindings()
         {
@@ -52,18 +46,11 @@ namespace Emux.GameBoy.Input
 
         public void Update()
         {
-            while (true)
+            foreach (GameBoyPadButton k in InputMap.Keys)
             {
-                foreach (GameBoyPadButton k in InputMap.Keys)
-                {
-                    if (InputMap[k].IsPressed)
-                    {
-                        vm.KeyPad.PressedButtons |= k;
-                    }
-                    else vm.KeyPad.PressedButtons &= ~k;
-                }
+                if (InputMap[k].IsPressed) vm.KeyPad.PressedButtons |= k;
+                else vm.KeyPad.PressedButtons &= ~k;
             }
-
         }
     }
 }

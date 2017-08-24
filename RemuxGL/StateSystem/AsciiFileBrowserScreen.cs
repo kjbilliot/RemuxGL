@@ -257,7 +257,6 @@ namespace RemuxGL.StateSystem
                 string fname = GetFileBrowserIndex(pointerIndex).Item1;
                 RemuxWindow wnd = (RemuxWindow)game;
                 wnd.StateManager.TransitionTo(fname.EndsWith(".gb") ? (IState)new GameboyPlayScreen(fname, wnd) : new ConfirmPlayScreen(fname, wnd));
-                Console.WriteLine("Chose " + fname);
             }
         }
         

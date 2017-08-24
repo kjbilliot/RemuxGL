@@ -3,21 +3,21 @@ using System.Runtime.InteropServices;
 
 namespace Emux.GameBoy
 {
-    internal class NativeTimer
+    public class NativeTimer
     {
         public delegate void MmTimerProc(uint timerid, uint msg, IntPtr user, uint dw1, uint dw2);
 
-        [DllImport("winmm.dll")]
-        private static extern uint timeSetEvent(
-            uint uDelay,
-            uint uResolution,
-            [MarshalAs(UnmanagedType.FunctionPtr)] MmTimerProc lpTimeProc,
-            uint dwUser,
-            int fuEvent
-        );
+        //[DllImport("winmm.dll")]
+        //private static extern uint timeSetEvent(
+        //    uint uDelay,
+        //    uint uResolution,
+        //    [MarshalAs(UnmanagedType.FunctionPtr)] MmTimerProc lpTimeProc,
+        //    uint dwUser,
+        //    int fuEvent
+        //);
 
-        [DllImport("winmm.dll")]
-        private static extern uint timeKillEvent(uint timerId);
+        //[DllImport("winmm.dll")]
+        //private static extern uint timeKillEvent(uint timerId);
         
         private readonly MmTimerProc _callback;
         private readonly int _frequency;
@@ -31,12 +31,14 @@ namespace Emux.GameBoy
 
         public void Start()
         {
-            _timerId = timeSetEvent((uint) (1000 / _frequency), 0, _callback, 0, 1);
+            //_timerId = timeSetEvent((uint) (1000 / _frequency), 0, _callback, 0, 1);
+            _timerId = WinApiEmulator.MultimediaTimer.SetTimer(1000 / _frequency, 0, _callback, 0, 1);
         }
 
         public void Stop()
         {
-            timeKillEvent(_timerId);
+            //timeKillEvent(_timerId);
+            WinApiEmulator.MultimediaTimer.CancelTimer(_timerId);
         }
     }
 }

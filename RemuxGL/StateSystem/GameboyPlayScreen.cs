@@ -82,6 +82,7 @@ namespace RemuxGL.StateSystem
 
         public void Update(GameTime gameTime)
         {
+            ioman.Update();
         }
     }
 }
