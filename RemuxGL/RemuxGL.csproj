@@ -51,6 +51,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateSystem\AsciiFileBrowserScreen.cs" />
+    <Compile Include="StateSystem\ConfirmPlayScreen.cs" />
+    <Compile Include="StateSystem\GameboyPlayScreen.cs" />
     <Compile Include="StateSystem\IState.cs" />
     <Compile Include="StateSystem\PanicScreen.cs" />
     <Compile Include="StateSystem\StateManager.cs" />

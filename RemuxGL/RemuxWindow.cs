@@ -14,7 +14,7 @@ namespace RemuxGL
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private StateManager stateManager;
+        public StateManager StateManager { get; private set; }
 
         public int WndWidth
         {
@@ -43,7 +43,7 @@ namespace RemuxGL
         protected override void Initialize()
         {
             base.Initialize();
-            stateManager = new StateManager(this);
+            StateManager = new StateManager(this);
         }
 
         protected override void LoadContent()
@@ -54,7 +54,7 @@ namespace RemuxGL
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            stateManager.Update(gameTime);
+            StateManager.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -62,7 +62,7 @@ namespace RemuxGL
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            stateManager.Draw(gameTime, spriteBatch);
+            StateManager.Draw(gameTime, spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
