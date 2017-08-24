@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Kyle/source/repos/RemuxGL/RemuxGL/Content/animal.png</SourceFile>
-  <SourceTime>2017-08-23T16:55:12.5704562-06:00</SourceTime>
-  <DestFile>C:/Users/Kyle/source/repos/RemuxGL/RemuxGL/Content/bin/DesktopGL/animal.xnb</DestFile>
-  <DestTime>2017-08-23T16:58:57.1132168-06:00</DestTime>
+  <SourceFile>D:/RemuxGL/RemuxGL/Content/animal.png</SourceFile>
+  <SourceTime>2017-08-24T08:54:35.2608676-06:00</SourceTime>
+  <DestFile>D:/RemuxGL/RemuxGL/Content/bin/DesktopGL/animal.xnb</DestFile>
+  <DestTime>2017-08-24T09:17:09.5235842-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T08:05:36-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

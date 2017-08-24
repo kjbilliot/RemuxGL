@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.IO;
 using RemuxGL.StateSystem;
+using Emux.GameBoy.Input;
 
 namespace RemuxGL
 {
@@ -53,7 +54,7 @@ namespace RemuxGL
 
         protected override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            base.Update(gameTime);            
             stateManager.Update(gameTime);
         }
 

@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Kyle/source/repos/RemuxGL/RemuxGL/Content/MainFont.spritefont</File>
-    <File>C:/Users/Kyle/source/repos/RemuxGL/RemuxGL/Content/animal.png</File>
+    <File>D:/RemuxGL/RemuxGL/Content/MainFont.spritefont</File>
+    <File>D:/RemuxGL/RemuxGL/Content/animal.png</File>
   </SourceFiles>
 </SourceFileCollection>
