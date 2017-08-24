@@ -55,6 +55,7 @@
     <Compile Include="Cpu\GameBoyAlu.cs" />
     <Compile Include="Cpu\InterruptFlags.cs" />
     <Compile Include="Cpu\RegisterFlags.cs" />
+    <Compile Include="Input\GameBoyInputDefinition.cs" />
     <Compile Include="Input\IoManager.cs" />
     <Compile Include="NativeTimer.cs" />
     <Compile Include="Timer\GameBoyTimer.cs" />

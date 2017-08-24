@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.IO;
 using RemuxGL.StateSystem;
+using Emux.GameBoy.Input;
 
 namespace RemuxGL
 {
