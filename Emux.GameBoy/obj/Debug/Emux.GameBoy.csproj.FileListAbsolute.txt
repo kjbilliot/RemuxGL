@@ -1,0 +1,28 @@
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\bin\Debug\Emux.GameBoy.dll
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\bin\Debug\Emux.GameBoy.pdb
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\obj\Debug\Emux.GameBoy.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\obj\Debug\Emux.GameBoy.csproj.CoreCompileInputs.cache
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\obj\Debug\Emux.GameBoy.dll
+C:\Users\Kyle\Documents\Visual Studio 2017\Projects\Remux\Emux.GameBoy\obj\Debug\Emux.GameBoy.pdb
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\Emux.GameBoy.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\Emux.GameBoy.pdb
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\MonoGame.Framework.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.DXGI.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.XInput.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\MonoGame.Framework.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.DXGI.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.Direct3D11.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.Direct2D1.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.XInput.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\bin\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\obj\Debug\Emux.GameBoy.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\obj\Debug\Emux.GameBoy.csproj.CoreCompileInputs.cache
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\obj\Debug\Emux.GameBoy.dll
+C:\Users\Kyle\source\repos\RemuxGL\Emux.GameBoy\obj\Debug\Emux.GameBoy.pdb
